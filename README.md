@@ -71,4 +71,9 @@ swagger-version-manager --help
 ```
 
 ### Windows
-_you can download a windows binary from the github releases page_
+1. Download the windows binary from the release page
+2. rename it to `swagger-version-manager.exe`
+3. execute it using powershell
+    - `swagger-version-manager` required admin privileges on windows because it writes the `swagger-codegen`
+      executable to `C:\Windows\System32\swagger-codegen`. I'm not familiar with windows but i'd love
+      a PR that changes this behaviour so that admin privileges are not required.
