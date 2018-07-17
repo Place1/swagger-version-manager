@@ -11,7 +11,7 @@ import (
 func Run(args []string) error {
 	app := cli.NewApp()
 	app.Name = "swagger-version-manager"
-	app.Version = "1.0.0"
+	app.Version = "1.0.1"
 
 	app.Commands = []cli.Command{
 		{
