@@ -55,7 +55,7 @@ func setSwaggerBinFile(version string) error {
 	scriptContent := ""
 	if runtime.GOOS == "windows" {
 		filePath = filepath.Join("C:/", "Windows", "System32", "swagger-codegen.bat")
-		scriptContent = fmt.Sprintf("java -jar '%s' %%*", outputPath(version))
+		scriptContent = fmt.Sprintf("java -jar \"%s\" %%*", outputPath(version))
 	} else {
 		filePath = "/usr/local/bin/swagger-codegen"
 		scriptContent = fmt.Sprintf(
