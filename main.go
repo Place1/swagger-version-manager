@@ -1,9 +1,9 @@
 package main
 
 import (
+	"github.com/Place1/swagger-version-manager/cli"
 	"log"
 	"os"
-	"github.com/Place1/swagger-version-manager/cli"
 )
 
 func main() {

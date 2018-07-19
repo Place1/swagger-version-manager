@@ -9,8 +9,6 @@ import (
 	"os"
 	"os/user"
 	"path/filepath"
-	"runtime"
-	"strings"
 
 	"gopkg.in/cheggaaa/pb.v1"
 )
@@ -22,7 +20,7 @@ func Use(version string) error {
 	if err != nil {
 		return err
 	}
-	err = setSwaggerBinFile(version)
+	err = setSwaggerBinFile(output)
 	if err != nil {
 		return err
 	}
@@ -41,32 +39,9 @@ func outputPath(version string) string {
 	return filepath.Join(homeDir, ".swagger-version-manager", fmt.Sprintf("swagger-codegen.%v.jar", version))
 }
 
-func trimLines(input string) string {
-	lines := strings.Split(strings.TrimSpace(input), "\n")
-	output := make([]string, len(lines))
-	for index, line := range lines {
-		output[index] = strings.TrimSpace(line)
-	}
-	return strings.Join(output, "\n")
-}
-
-func setSwaggerBinFile(version string) error {
-	filePath := ""
-	scriptContent := ""
-	if runtime.GOOS == "windows" {
-		filePath = filepath.Join("C:/", "Windows", "System32", "swagger-codegen.bat")
-		scriptContent = fmt.Sprintf("java -jar \"%s\" %%*", outputPath(version))
-	} else {
-		filePath = "/usr/local/bin/swagger-codegen"
-		scriptContent = fmt.Sprintf(
-			trimLines(`
-				#!/bin/bash
-				set -e
-				java -jar "%s" $@;
-			`),
-			outputPath(version),
-		)
-	}
+func setSwaggerBinFile(swaggerJar string) error {
+	filePath := getSwaggerExecutablePath()
+	scriptContent := getSwaggerExecutableContent(swaggerJar)
 	fmt.Printf("updated %s\n", filePath)
 	err := ioutil.WriteFile(filePath, []byte(scriptContent), os.ModePerm)
 	if err != nil {
