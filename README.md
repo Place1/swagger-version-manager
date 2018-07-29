@@ -77,3 +77,6 @@ swagger-version-manager --help
     - `swagger-version-manager` required admin privileges on windows because it writes the `swagger-codegen`
       executable to `C:\Windows\System32\swagger-codegen`. I'm not familiar with windows but i'd love
       a PR that changes this behaviour so that admin privileges are not required.
+
+## OpenAPI
+If you found this tool useful, you may also be interested in the OpenAPI version: https://github.com/place1/openapi-version-manager
