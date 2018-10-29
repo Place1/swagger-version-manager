@@ -1,5 +1,7 @@
 # swagger-version-manager
 
+_If you're using swagger-codegen I'd recommend giving OpenAPI Codegen a try. I've written `openapi-version-manager` as well ([link](https://github.com/place1/openapi-version-manager))_
+
 ## What's this?
 `swagger-version-manager` is a tiny CLI tool to help you manage different versions of `swagger-codegen` on your local
 machine.
